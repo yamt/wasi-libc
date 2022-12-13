@@ -70,6 +70,22 @@ int __init_tp(void *p)
 	td->tid = __syscall(SYS_set_tid_address, &__thread_list_lock);
 #else
 	setup_default_stack_size();
+	td->detach_state = DT_JOINABLE;
+	/*
+	 * Initialize the TID to a large value, which is hopefully
+	 * less likely to conflict with host-allocated TIDs, so that
+	 * TID-based locks can work.
+	 *
+	 * For longer term, we need a better solution.
+	 * See: https://github.com/WebAssembly/wasi-threads/issues/15
+	 *
+	 * Note:
+	 * - positive values can conflict with host-allocated TIDs.
+	 * - __tl_lock and __lockfile uses TID 0 as "unlocked".
+	 * - __lockfile relies on the fact the most significant two bits
+	 *   of TIDs are 0.
+	 */
+	td->tid = 0x3fffffff;
 #endif
 	td->locale = &libc.global_locale;
 	td->robust_list.head = &td->robust_list.head;
