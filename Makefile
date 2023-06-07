@@ -474,7 +474,7 @@ default: finish
 # TODO: split $^ using `wordlist` like we do for %.a below
 # TODO: include SDK version in filename, e.g. libc.so.21
 $(SYSROOT_LIB)/libc.so: \
-		$(LIBC_OBJS) \
+		$(filter-out %/__main_void.o,$(LIBC_OBJS)) \
 		$(LIBWASI_EMULATED_MMAN_OBJS) \
 		$(LIBWASI_EMULATED_PROCESS_CLOCKS_OBJS) \
 		$(LIBWASI_EMULATED_GETPID_OBJS) \
