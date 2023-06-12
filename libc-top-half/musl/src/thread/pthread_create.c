@@ -305,8 +305,14 @@ static int start_c11(void *p)
 void wasi_thread_start(int tid, void *p);
 hidden void *__dummy_reference = wasi_thread_start;
 
+void *gcanary;
+
 hidden void __wasi_thread_start_C(int tid, void *p)
 {
+	char canary[100];
+	canary[0] = 123;
+	canary[99] = 99;
+	gcanary = canary; // just to avoid "canary" being optimized out
 	struct start_args *args = p;
 	pthread_t self = __pthread_self();
 	// Set the thread ID (TID) on the pthread structure. The TID is stored
@@ -316,6 +322,9 @@ hidden void __wasi_thread_start_C(int tid, void *p)
 	atomic_store((atomic_int *) &(self->tid), tid);
 	// Execute the user's start function.
 	__pthread_exit(args->start_func(args->start_arg));
+	if (canary[0] != 123 || canary[99] != 99) {
+		a_crash();
+	}
 }
 #endif
 

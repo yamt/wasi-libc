@@ -4719,6 +4719,7 @@ void dlfree(void* mem) {
 
   if (mem != 0) {
     mchunkptr p  = mem2chunk(mem);
+    memset(mem, 0xaa, chunksize(p) - overhead_for(p));
 #if FOOTERS
     mstate fm = get_mstate_for(p);
     if (!ok_magic(fm)) {
