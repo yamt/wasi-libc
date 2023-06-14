@@ -88,6 +88,7 @@ LIBC_TOP_HALF_MUSL_SOURCES = \
 	misc/a64l.c \
 	misc/basename.c \
 	misc/dirname.c \
+	misc/dl.c \
 	misc/ffs.c \
 	misc/ffsl.c \
 	misc/ffsll.c \
