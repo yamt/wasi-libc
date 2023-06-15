@@ -473,7 +473,7 @@ endif
 default: finish
 
 # TODO: split $^ using `wordlist` like we do for %.a below
-# TODO: include SDK version in filename, e.g. libc.so.21
+# TODO: include SDK version in filename, e.g. libc.so.21 via symlink
 $(SYSROOT_LIB)/libc.so: \
 		$(filter-out %/__main_void.o,$(LIBC_OBJS)) \
 		$(LIBWASI_EMULATED_MMAN_OBJS) \
@@ -482,7 +482,7 @@ $(SYSROOT_LIB)/libc.so: \
 		$(LIBWASI_EMULATED_SIGNAL_OBJS) \
 		$(LIBWASI_EMULATED_SIGNAL_MUSL_OBJS) \
 		$(BUILTINS_LIB)
-	$(LD) -shared -o $@ $^
+	$(CC) -shared -o $@ $^
 
 $(SYSROOT_LIB)/libc.a: $(LIBC_OBJS)
 
