@@ -472,15 +472,16 @@ endif
 default: finish
 
 # TODO: split $^ using `wordlist` like we do for %.a below
-# TODO: include SDK version in filename, e.g. libc.so.21 via symlink
+# TODO: include SDK version, e.g. libc.so.wasi-sdk-21, as SO_NAME once `wasm-ld` supports it
 $(SYSROOT_LIB)/libc.so: \
 		$(filter-out %/__main_void.o,$(LIBC_OBJS)) \
 		$(LIBWASI_EMULATED_MMAN_OBJS) \
 		$(LIBWASI_EMULATED_PROCESS_CLOCKS_OBJS) \
 		$(LIBWASI_EMULATED_GETPID_OBJS) \
 		$(LIBWASI_EMULATED_SIGNAL_OBJS) \
-		$(LIBWASI_EMULATED_SIGNAL_MUSL_OBJS)
-	$(CC) -shared -o $@ $^
+		$(LIBWASI_EMULATED_SIGNAL_MUSL_OBJS) \
+		$(BUILTINS_LIB)
+	$(CC) -nostdlib -shared -o $@ $^
 
 $(SYSROOT_LIB)/libc.a: $(LIBC_OBJS)
 
