@@ -475,7 +475,7 @@ default: finish
 # TODO: split $^ using `wordlist` like we do for %.a below
 # TODO: include SDK version, e.g. libc.so.wasi-sdk-21, as SO_NAME once `wasm-ld` supports it
 $(SYSROOT_LIB)/libc.so: \
-		$(filter-out %/__main_void.o,$(LIBC_OBJS)) \
+		$(LIBC_OBJS) \
 		$(LIBWASI_EMULATED_MMAN_OBJS) \
 		$(LIBWASI_EMULATED_PROCESS_CLOCKS_OBJS) \
 		$(LIBWASI_EMULATED_GETPID_OBJS) \
