@@ -6,14 +6,12 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-extern thread_local int __errno;
+extern thread_local int errno;
 #else
-extern _Thread_local int __errno;
+extern _Thread_local int errno;
 #endif
 
-int *__errno_location(void);
-
-#define errno (*__errno_location())
+#define errno errno
 
 #ifdef __cplusplus
 }
