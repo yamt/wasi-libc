@@ -509,12 +509,9 @@ $(SYSROOT_LIB)/libwasi-emulated-signal.a: $(LIBWASI_EMULATED_SIGNAL_OBJS) $(LIBW
 	# silently dropping the tail.
 	$(AR) crs $@ $(wordlist 800, 100000, $(sort $^))
 
-# TODO: This is commented out so we get long double support in libc.so, but
-# there's probably a better way to do that without making it the default for
-# static linking as well:
-# $(MUSL_PRINTSCAN_OBJS): CFLAGS += \
-#	    -D__wasilibc_printscan_no_long_double \
-#	    -D__wasilibc_printscan_full_support_option="\"add -lc-printscan-long-double to the link command\""
+$(MUSL_PRINTSCAN_OBJS): CFLAGS += \
+	    -D__wasilibc_printscan_no_long_double \
+	    -D__wasilibc_printscan_full_support_option="\"add -lc-printscan-long-double to the link command\""
 
 $(MUSL_PRINTSCAN_NO_FLOATING_POINT_OBJS): CFLAGS += \
 	    -D__wasilibc_printscan_no_floating_point \
