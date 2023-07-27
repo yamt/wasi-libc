@@ -478,11 +478,6 @@ default: finish
 # TODO: include SDK version, e.g. libc.so.wasi-sdk-21, as SO_NAME once `wasm-ld` supports it
 $(SYSROOT_LIB)/libc.so: \
 		$(LIBC_OBJS) \
-		$(LIBWASI_EMULATED_MMAN_OBJS) \
-		$(LIBWASI_EMULATED_PROCESS_CLOCKS_OBJS) \
-		$(LIBWASI_EMULATED_GETPID_OBJS) \
-		$(LIBWASI_EMULATED_SIGNAL_OBJS) \
-		$(LIBWASI_EMULATED_SIGNAL_MUSL_OBJS) \
 		$(BUILTINS_LIB)
 	$(CC) -nostdlib -shared -o $@ $^
 
