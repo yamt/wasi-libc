@@ -645,7 +645,9 @@ finish: startup_files libc
 # alloctor (providing malloc, calloc, free, etc). Skip this step if the build
 # is done without a malloc implementation.
 ifneq ($(MALLOC_IMPL),none)
+ifneq ($(BUILD_TYPE),shared)
 finish: check-symbols
+endif
 endif
 
 DEFINED_SYMBOLS = $(SYSROOT_SHARE)/defined-symbols.txt
