@@ -8,13 +8,15 @@ NM ?= $(patsubst %clang,%llvm-nm,$(filter-out ccache sccache,$(CC)))
 ifeq ($(origin AR), default)
 AR = $(patsubst %clang,%llvm-ar,$(filter-out ccache sccache,$(CC)))
 endif
-EXTRA_CFLAGS ?= -O2 -DNDEBUG -fPIC -fvisibility=default
+EXTRA_CFLAGS ?= -O2 -DNDEBUG
 # The directory where we build the sysroot.
 SYSROOT ?= $(CURDIR)/sysroot
 # A directory to install to for "make install".
 INSTALL_DIR ?= /usr/local
 # single or posix; note that pthread support is still a work-in-progress.
 THREAD_MODEL ?= single
+# build static or shared library
+BUILD_TYPE ?= static
 # dlmalloc or none
 MALLOC_IMPL ?= dlmalloc
 # yes or no
@@ -333,6 +335,10 @@ ASMFLAGS += -matomics
 CFLAGS += -I$(LIBC_BOTTOM_HALF_CLOUDLIBC_SRC)
 endif
 
+ifeq ($(BUILD_TYPE),shared)
+CFLAGS += -fPIC -fvisibility=default
+endif
+
 # Expose the public headers to the implementation. We use `-isystem` for
 # purpose for two reasons:
 #
@@ -605,8 +611,14 @@ startup_files: include_dirs $(LIBC_BOTTOM_HALF_CRT_OBJS)
 	mkdir -p "$(SYSROOT_LIB)" && \
 	cp $(LIBC_BOTTOM_HALF_CRT_OBJS) "$(SYSROOT_LIB)"
 
+ifeq ($(BUILD_TYPE),shared)
+
 libc: include_dirs \
-    $(SYSROOT_LIB)/libc.so \
+    $(SYSROOT_LIB)/libc.so
+
+else
+
+libc: include_dirs \
     $(SYSROOT_LIB)/libc.a \
     $(SYSROOT_LIB)/libc-printscan-long-double.a \
     $(SYSROOT_LIB)/libc-printscan-no-floating-point.a \
@@ -614,6 +626,8 @@ libc: include_dirs \
     $(SYSROOT_LIB)/libwasi-emulated-process-clocks.a \
     $(SYSROOT_LIB)/libwasi-emulated-getpid.a \
     $(SYSROOT_LIB)/libwasi-emulated-signal.a
+
+endif
 
 finish: startup_files libc
 	#
