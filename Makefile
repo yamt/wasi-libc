@@ -15,7 +15,8 @@ SYSROOT ?= $(CURDIR)/sysroot
 INSTALL_DIR ?= /usr/local
 # single or posix; note that pthread support is still a work-in-progress.
 THREAD_MODEL ?= single
-# build static or shared library
+# build static or shared library.
+# BUILD_TYPE=shared is experimental.
 BUILD_TYPE ?= static
 # dlmalloc or none
 MALLOC_IMPL ?= dlmalloc
@@ -613,6 +614,8 @@ startup_files: include_dirs $(LIBC_BOTTOM_HALF_CRT_OBJS)
 
 ifeq ($(BUILD_TYPE),shared)
 
+# only build libc.so for now.
+# REVISIT: build other libraries
 libc: include_dirs \
     $(SYSROOT_LIB)/libc.so
 
