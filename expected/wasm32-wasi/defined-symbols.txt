@@ -340,7 +340,6 @@ __wasilibc_tell
 __wasilibc_unlinkat
 __wasilibc_utimens
 __wasm_call_dtors
-__wasm_set_libraries
 __wcscoll_l
 __wcsftime_l
 __wcsxfrm_l
@@ -511,10 +510,6 @@ difftime
 dirfd
 dirname
 div
-dlclose
-dlerror
-dlopen
-dlsym
 dprintf
 drand48
 drem
