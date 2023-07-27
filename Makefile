@@ -87,90 +87,90 @@ LIBC_TOP_HALF_MUSL_SRC_DIR = $(LIBC_TOP_HALF_MUSL_DIR)/src
 LIBC_TOP_HALF_MUSL_INC = $(LIBC_TOP_HALF_MUSL_DIR)/include
 LIBC_TOP_HALF_MUSL_SOURCES = \
     $(addprefix $(LIBC_TOP_HALF_MUSL_SRC_DIR)/, \
-	misc/a64l.c \
-	misc/basename.c \
-	misc/dirname.c \
-	misc/ffs.c \
-	misc/ffsl.c \
-	misc/ffsll.c \
-	misc/fmtmsg.c \
-	misc/getdomainname.c \
-	misc/gethostid.c \
-	misc/getopt.c \
-	misc/getopt_long.c \
-	misc/getsubopt.c \
-	misc/uname.c \
-	misc/nftw.c \
-	errno/strerror.c \
-	network/htonl.c \
-	network/htons.c \
-	network/ntohl.c \
-	network/ntohs.c \
-	network/inet_ntop.c \
-	network/inet_pton.c \
-	network/inet_aton.c \
-	network/in6addr_any.c \
-	network/in6addr_loopback.c \
-	fenv/fenv.c \
-	fenv/fesetround.c \
-	fenv/feupdateenv.c \
-	fenv/fesetexceptflag.c \
-	fenv/fegetexceptflag.c \
-	fenv/feholdexcept.c \
-	exit/exit.c \
-	exit/atexit.c \
-	exit/assert.c \
-	exit/quick_exit.c \
-	exit/at_quick_exit.c \
-	time/strftime.c \
-	time/asctime.c \
-	time/asctime_r.c \
-	time/ctime.c \
-	time/ctime_r.c \
-	time/wcsftime.c \
-	time/strptime.c \
-	time/difftime.c \
-	time/timegm.c \
-	time/ftime.c \
-	time/gmtime.c \
-	time/gmtime_r.c \
-	time/timespec_get.c \
-	time/getdate.c \
-	time/localtime.c \
-	time/localtime_r.c \
-	time/mktime.c \
-	time/__tm_to_secs.c \
-	time/__month_to_secs.c \
-	time/__secs_to_tm.c \
-	time/__year_to_secs.c \
-	time/__tz.c \
-	fcntl/creat.c \
-	dirent/alphasort.c \
-	dirent/versionsort.c \
-	env/__stack_chk_fail.c \
-	env/clearenv.c \
-	env/getenv.c \
-	env/putenv.c \
-	env/setenv.c \
-	env/unsetenv.c \
-	unistd/posix_close.c \
-	stat/futimesat.c \
-	legacy/getpagesize.c \
-	thread/thrd_sleep.c \
+        misc/a64l.c \
+        misc/basename.c \
+        misc/dirname.c \
+        misc/ffs.c \
+        misc/ffsl.c \
+        misc/ffsll.c \
+        misc/fmtmsg.c \
+        misc/getdomainname.c \
+        misc/gethostid.c \
+        misc/getopt.c \
+        misc/getopt_long.c \
+        misc/getsubopt.c \
+        misc/uname.c \
+        misc/nftw.c \
+        errno/strerror.c \
+        network/htonl.c \
+        network/htons.c \
+        network/ntohl.c \
+        network/ntohs.c \
+        network/inet_ntop.c \
+        network/inet_pton.c \
+        network/inet_aton.c \
+        network/in6addr_any.c \
+        network/in6addr_loopback.c \
+        fenv/fenv.c \
+        fenv/fesetround.c \
+        fenv/feupdateenv.c \
+        fenv/fesetexceptflag.c \
+        fenv/fegetexceptflag.c \
+        fenv/feholdexcept.c \
+        exit/exit.c \
+        exit/atexit.c \
+        exit/assert.c \
+        exit/quick_exit.c \
+        exit/at_quick_exit.c \
+        time/strftime.c \
+        time/asctime.c \
+        time/asctime_r.c \
+        time/ctime.c \
+        time/ctime_r.c \
+        time/wcsftime.c \
+        time/strptime.c \
+        time/difftime.c \
+        time/timegm.c \
+        time/ftime.c \
+        time/gmtime.c \
+        time/gmtime_r.c \
+        time/timespec_get.c \
+        time/getdate.c \
+        time/localtime.c \
+        time/localtime_r.c \
+        time/mktime.c \
+        time/__tm_to_secs.c \
+        time/__month_to_secs.c \
+        time/__secs_to_tm.c \
+        time/__year_to_secs.c \
+        time/__tz.c \
+        fcntl/creat.c \
+        dirent/alphasort.c \
+        dirent/versionsort.c \
+        env/__stack_chk_fail.c \
+        env/clearenv.c \
+        env/getenv.c \
+        env/putenv.c \
+        env/setenv.c \
+        env/unsetenv.c \
+        unistd/posix_close.c \
+        stat/futimesat.c \
+        legacy/getpagesize.c \
+        thread/thrd_sleep.c \
     ) \
     $(filter-out %/procfdname.c %/syscall.c %/syscall_ret.c %/vdso.c %/version.c, \
-		 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/internal/*.c)) \
+                 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/internal/*.c)) \
     $(filter-out %/flockfile.c %/funlockfile.c %/__lockfile.c %/ftrylockfile.c \
-		 %/rename.c \
-		 %/tmpnam.c %/tmpfile.c %/tempnam.c \
-		 %/popen.c %/pclose.c \
-		 %/remove.c \
-		 %/gets.c, \
-		 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/stdio/*.c)) \
+                 %/rename.c \
+                 %/tmpnam.c %/tmpfile.c %/tempnam.c \
+                 %/popen.c %/pclose.c \
+                 %/remove.c \
+                 %/gets.c, \
+                 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/stdio/*.c)) \
     $(filter-out %/strsignal.c, \
-		 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/string/*.c)) \
+                 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/string/*.c)) \
     $(filter-out %/dcngettext.c %/textdomain.c %/bind_textdomain_codeset.c, \
-		 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/locale/*.c)) \
+                 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/locale/*.c)) \
     $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/stdlib/*.c) \
     $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/search/*.c) \
     $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/multibyte/*.c) \
@@ -179,105 +179,105 @@ LIBC_TOP_HALF_MUSL_SOURCES = \
     $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/conf/*.c) \
     $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/ctype/*.c) \
     $(filter-out %/__signbit.c %/__signbitf.c %/__signbitl.c \
-		 %/__fpclassify.c %/__fpclassifyf.c %/__fpclassifyl.c \
-		 %/ceilf.c %/ceil.c \
-		 %/floorf.c %/floor.c \
-		 %/truncf.c %/trunc.c \
-		 %/rintf.c %/rint.c \
-		 %/nearbyintf.c %/nearbyint.c \
-		 %/sqrtf.c %/sqrt.c \
-		 %/fabsf.c %/fabs.c \
-		 %/copysignf.c %/copysign.c \
-		 %/fminf.c %/fmaxf.c \
-		 %/fmin.c %/fmax.c, \
-		 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/math/*.c)) \
+                 %/__fpclassify.c %/__fpclassifyf.c %/__fpclassifyl.c \
+                 %/ceilf.c %/ceil.c \
+                 %/floorf.c %/floor.c \
+                 %/truncf.c %/trunc.c \
+                 %/rintf.c %/rint.c \
+                 %/nearbyintf.c %/nearbyint.c \
+                 %/sqrtf.c %/sqrt.c \
+                 %/fabsf.c %/fabs.c \
+                 %/copysignf.c %/copysign.c \
+                 %/fminf.c %/fmaxf.c \
+                 %/fmin.c %/fmax.c, \
+                 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/math/*.c)) \
     $(filter-out %/crealf.c %/creal.c %creall.c \
-		 %/cimagf.c %/cimag.c %cimagl.c, \
-		 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/complex/*.c)) \
+                 %/cimagf.c %/cimag.c %cimagl.c, \
+                 $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/complex/*.c)) \
     $(wildcard $(LIBC_TOP_HALF_MUSL_SRC_DIR)/crypt/*.c)
 
 ifeq ($(THREAD_MODEL), posix)
 LIBC_TOP_HALF_MUSL_SOURCES += \
     $(addprefix $(LIBC_TOP_HALF_MUSL_SRC_DIR)/, \
-	env/__init_tls.c \
-	stdio/__lockfile.c \
-	stdio/flockfile.c \
-	stdio/ftrylockfile.c \
-	stdio/funlockfile.c \
-	thread/__lock.c \
-	thread/__wait.c \
-	thread/__timedwait.c \
-	thread/default_attr.c \
-	thread/pthread_attr_destroy.c \
-	thread/pthread_attr_get.c \
-	thread/pthread_attr_init.c \
-	thread/pthread_attr_setstack.c \
-	thread/pthread_attr_setdetachstate.c \
-	thread/pthread_attr_setstacksize.c \
-	thread/pthread_barrier_destroy.c \
-	thread/pthread_barrier_init.c \
-	thread/pthread_barrier_wait.c \
-	thread/pthread_cleanup_push.c \
-	thread/pthread_cond_broadcast.c \
-	thread/pthread_cond_destroy.c \
-	thread/pthread_cond_init.c \
-	thread/pthread_cond_signal.c \
-	thread/pthread_cond_timedwait.c \
-	thread/pthread_cond_wait.c \
-	thread/pthread_condattr_destroy.c \
-	thread/pthread_condattr_init.c \
-	thread/pthread_condattr_setclock.c \
-	thread/pthread_condattr_setpshared.c \
-	thread/pthread_create.c \
-	thread/pthread_detach.c \
-	thread/pthread_equal.c \
-	thread/pthread_getspecific.c \
-	thread/pthread_join.c \
-	thread/pthread_key_create.c \
-	thread/pthread_mutex_consistent.c \
-	thread/pthread_mutex_destroy.c \
-	thread/pthread_mutex_init.c \
-	thread/pthread_mutex_getprioceiling.c \
-	thread/pthread_mutex_lock.c \
-	thread/pthread_mutex_timedlock.c \
-	thread/pthread_mutex_trylock.c \
-	thread/pthread_mutex_unlock.c \
-	thread/pthread_mutexattr_destroy.c \
-	thread/pthread_mutexattr_init.c \
-	thread/pthread_mutexattr_setprotocol.c \
-	thread/pthread_mutexattr_setpshared.c \
-	thread/pthread_mutexattr_setrobust.c \
-	thread/pthread_mutexattr_settype.c \
-	thread/pthread_once.c \
-	thread/pthread_rwlock_destroy.c \
-	thread/pthread_rwlock_init.c \
-	thread/pthread_rwlock_rdlock.c \
-	thread/pthread_rwlock_timedrdlock.c \
-	thread/pthread_rwlock_timedwrlock.c \
-	thread/pthread_rwlock_tryrdlock.c \
-	thread/pthread_rwlock_trywrlock.c \
-	thread/pthread_rwlock_unlock.c \
-	thread/pthread_rwlock_wrlock.c \
-	thread/pthread_rwlockattr_destroy.c \
-	thread/pthread_rwlockattr_init.c \
-	thread/pthread_rwlockattr_setpshared.c \
-	thread/pthread_setcancelstate.c \
-	thread/pthread_setspecific.c \
-	thread/pthread_self.c \
-	thread/pthread_spin_destroy.c \
-	thread/pthread_spin_init.c \
-	thread/pthread_spin_lock.c \
-	thread/pthread_spin_trylock.c \
-	thread/pthread_spin_unlock.c \
-	thread/pthread_testcancel.c \
-	thread/sem_destroy.c \
-	thread/sem_getvalue.c \
-	thread/sem_init.c \
-	thread/sem_post.c \
-	thread/sem_timedwait.c \
-	thread/sem_trywait.c \
-	thread/sem_wait.c \
-	thread/wasm32/wasi_thread_start.s \
+        env/__init_tls.c \
+        stdio/__lockfile.c \
+        stdio/flockfile.c \
+        stdio/ftrylockfile.c \
+        stdio/funlockfile.c \
+        thread/__lock.c \
+        thread/__wait.c \
+        thread/__timedwait.c \
+        thread/default_attr.c \
+        thread/pthread_attr_destroy.c \
+        thread/pthread_attr_get.c \
+        thread/pthread_attr_init.c \
+        thread/pthread_attr_setstack.c \
+        thread/pthread_attr_setdetachstate.c \
+        thread/pthread_attr_setstacksize.c \
+        thread/pthread_barrier_destroy.c \
+        thread/pthread_barrier_init.c \
+        thread/pthread_barrier_wait.c \
+        thread/pthread_cleanup_push.c \
+        thread/pthread_cond_broadcast.c \
+        thread/pthread_cond_destroy.c \
+        thread/pthread_cond_init.c \
+        thread/pthread_cond_signal.c \
+        thread/pthread_cond_timedwait.c \
+        thread/pthread_cond_wait.c \
+        thread/pthread_condattr_destroy.c \
+        thread/pthread_condattr_init.c \
+        thread/pthread_condattr_setclock.c \
+        thread/pthread_condattr_setpshared.c \
+        thread/pthread_create.c \
+        thread/pthread_detach.c \
+        thread/pthread_equal.c \
+        thread/pthread_getspecific.c \
+        thread/pthread_join.c \
+        thread/pthread_key_create.c \
+        thread/pthread_mutex_consistent.c \
+        thread/pthread_mutex_destroy.c \
+        thread/pthread_mutex_init.c \
+        thread/pthread_mutex_getprioceiling.c \
+        thread/pthread_mutex_lock.c \
+        thread/pthread_mutex_timedlock.c \
+        thread/pthread_mutex_trylock.c \
+        thread/pthread_mutex_unlock.c \
+        thread/pthread_mutexattr_destroy.c \
+        thread/pthread_mutexattr_init.c \
+        thread/pthread_mutexattr_setprotocol.c \
+        thread/pthread_mutexattr_setpshared.c \
+        thread/pthread_mutexattr_setrobust.c \
+        thread/pthread_mutexattr_settype.c \
+        thread/pthread_once.c \
+        thread/pthread_rwlock_destroy.c \
+        thread/pthread_rwlock_init.c \
+        thread/pthread_rwlock_rdlock.c \
+        thread/pthread_rwlock_timedrdlock.c \
+        thread/pthread_rwlock_timedwrlock.c \
+        thread/pthread_rwlock_tryrdlock.c \
+        thread/pthread_rwlock_trywrlock.c \
+        thread/pthread_rwlock_unlock.c \
+        thread/pthread_rwlock_wrlock.c \
+        thread/pthread_rwlockattr_destroy.c \
+        thread/pthread_rwlockattr_init.c \
+        thread/pthread_rwlockattr_setpshared.c \
+        thread/pthread_setcancelstate.c \
+        thread/pthread_setspecific.c \
+        thread/pthread_self.c \
+        thread/pthread_spin_destroy.c \
+        thread/pthread_spin_init.c \
+        thread/pthread_spin_lock.c \
+        thread/pthread_spin_trylock.c \
+        thread/pthread_spin_unlock.c \
+        thread/pthread_testcancel.c \
+        thread/sem_destroy.c \
+        thread/sem_getvalue.c \
+        thread/sem_init.c \
+        thread/sem_post.c \
+        thread/sem_timedwait.c \
+        thread/sem_trywait.c \
+        thread/sem_wait.c \
+        thread/wasm32/wasi_thread_start.s \
     )
 endif
 
@@ -522,10 +522,10 @@ $(MUSL_PRINTSCAN_NO_FLOATING_POINT_OBJS): CFLAGS += \
 # TODO: apply -mbulk-memory globally, once
 # https://github.com/llvm/llvm-project/issues/52618 is resolved
 $(BULK_MEMORY_OBJS): CFLAGS += \
-	-mbulk-memory
+        -mbulk-memory
 
 $(BULK_MEMORY_OBJS): CFLAGS += \
-	-DBULK_MEMORY_THRESHOLD=$(BULK_MEMORY_THRESHOLD)
+        -DBULK_MEMORY_THRESHOLD=$(BULK_MEMORY_THRESHOLD)
 
 $(LIBWASI_EMULATED_SIGNAL_MUSL_OBJS): CFLAGS += \
 	    -D_WASI_EMULATED_SIGNAL
