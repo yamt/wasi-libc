@@ -36,29 +36,10 @@ struct libraries_t {
 static const char *error = 0;
 static struct libraries_t *libraries = 0;
 
-static int invalid_handle(void *library_void) {
-    if (libraries == 0) {
-        fprintf(stderr, "`__wasm_set_libraries` should have been called during "
-                "instantiation with a non-NULL value\n");
-        abort();
-    }
-
-    for (uint32_t index = 0; index < libraries->count; ++index) {
-        if (libraries->libraries + index == library_void) {
-            return 0;
-        }
-    }
-
-    error = "invalid library handle";
-    return 1;
-}
-
 EXPORT int dlclose(void *library_void) {
-    if (invalid_handle(library_void)) {
-        return -1;
-    } else {
-        return 0;
-    }
+    // TODO
+    error = "dlclose not yet supported";
+    return -1;
 }
 
 EXPORT char *dlerror(void) {
@@ -69,7 +50,7 @@ EXPORT char *dlerror(void) {
 
 EXPORT void *dlopen(const char *name, int flags) {
     if (libraries == 0) {
-        fprintf(stderr, "`__wasm_set_libraries` should have been called during "
+        fprintf(stderr, "`__wasm_set_libraries` should have been called during component "
                 "instantiation with a non-NULL value\n");
         abort();
     }
@@ -110,10 +91,6 @@ EXPORT void *dlsym(void *library_void, const char *name) {
     if (library_void == RTLD_NEXT || library_void == RTLD_DEFAULT) {
         // TODO
         error = "dlsym RTLD_NEXT and RTLD_DEFAULT not yet supported";
-        return 0;
-    }
-
-    if (invalid_handle(library_void)) {
         return 0;
     }
 
