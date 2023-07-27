@@ -443,6 +443,7 @@ MUSL_OMIT_HEADERS += \
     "netdb.h" \
     "resolv.h" \
     "pty.h" \
+    "dlfcn.h" \
     "setjmp.h" \
     "ulimit.h" \
     "sys/xattr.h" \
